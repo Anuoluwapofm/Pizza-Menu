@@ -1,0 +1,284 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap");
+
+/*
+The syntax error from your screenshot has been fixed here.
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corrected the selector 'npm start html' to just 'html' */
+html {
+  /* This means 1rem = 10px (62.5% of 16px default) */
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto Mono", sans-serif;
+  color: #252525;
+  font-weight: 400;
+  background-color: #f7f2e9;
+  border-bottom: 1.6rem solid #edc84b;
+  min-height: 100vh;
+  /* Reduced padding slightly for better use of space */
+  padding: 3.2rem;
+  padding-bottom: 6rem;
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4.8rem;
+}
+
+/* *************** */
+
+.header {
+  align-self: stretch;
+}
+
+.header h1 {
+  /* Non-accessible color /
+  color: #edc84b;
+  / color: #af8602; */
+
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 5.2rem;
+  font-weight: 300;
+  letter-spacing: 3px;
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+.header h1::before,
+.header h1::after {
+  display: block;
+  content: "";
+  height: 3px;
+  width: 4rem;
+  background-color: #edc84b;
+  position: absolute;
+  top: calc(50% - 1px);
+}
+
+.header h1::before {
+  left: 0;
+}
+
+.header h1::after {
+  right: 0;
+}
+
+/* *************** */
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+.menu h2 {
+  display: inline-block;
+  padding: 1rem 0;
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+.menu > p {
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 1.6;
+  width: 80%;
+}
+
+.pizzas {
+  list-style: none;
+  display: grid;
+  /* Default: 2 columns */
+  grid-template-columns: 1fr 1fr;
+  gap: 4.8rem;
+}
+
+.pizza {
+  display: flex;
+  gap: 3.2rem;
+}
+
+.pizza img {
+  width: 12rem;
+  aspect-ratio: 1;
+  align-self: start;
+}
+
+.pizza div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 0.4rem 0;
+}
+
+.pizza h3 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.pizza p {
+  font-size: 1.4rem;
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: auto;
+}
+
+.pizza span {
+  display: block;
+  font-size: 1.6rem;
+}
+
+.pizza.sold-out {
+  color: #888;
+}
+
+.pizza.sold-out img {
+  filter: grayscale();
+  opacity: 0.8;
+}
+
+/* *************** */
+
+.footer {
+  font-size: 1.4rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.order {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.4rem;
+  justify-content: center;
+}
+
+.btn {
+  color: inherit;
+  font-family: inherit;
+  border: none;
+  font-size: 1.4rem;
+  font-weight: 500;
+  background-color: #edc84b;
+  padding: 1.4rem 3.2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background-color: #e9bb24;
+}
+
+/*
+SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 40 / 48 / 64 / 80 / 96 / 128
+
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 /52 / 62 / 74 / 86 / 98
+*/
+
+/* ****************** */
+/* 📱 RESPONSIVE MEDIA QUERIES */
+/* ****************** */
+
+/* ------------------------------------------- */
+/* 1. TABLET / MID-SIZED SCREENS (Max-width 70rem / 700px) */
+/* ------------------------------------------- */
+
+@media (max-width: 70rem) {
+  /* Reduce container padding on wider screens to maximize space */
+  body {
+    padding: 2.4rem 2rem;
+  }
+
+  /* Make the main pizza list stack into a single column on tablets */
+  .pizzas {
+    grid-template-columns: 1fr; /* Forces the menu items to stack vertically */
+    gap: 3.2rem; /* Reduced vertical gap */
+    width: 80%; /* Constrain the list width slightly */
+  }
+}
+
+/* ------------------------------------------- */
+/* 2. MOBILE PHONES (Max-width 48rem / 480px) */
+/* ------------------------------------------- */
+
+@media (max-width: 48rem) {
+  /* Reduce padding even more for small phones */
+  body {
+    padding: 2.4rem 1.6rem;
+  }
+
+  /* Adjust the main heading size for better mobile viewing */
+  .header h1 {
+    font-size: 4rem; /* Reduces the large font size of 'FAST REACT PIZZA CO.' */
+    letter-spacing: 2px;
+  }
+
+  /* Remove the side lines from the heading on small screens to save space */
+  .header h1::before,
+  .header h1::after {
+    display: none;
+  }
+
+  /* Center-align the pizza list on the mobile screen */
+  .pizzas {
+    width: 95%;
+    justify-items: center; /* Center items within the grid */
+  }
+
+  /* Adjust the layout of individual pizza items */
+  .pizza {
+    /* Stack image and details vertically for better use of narrow space */
+    flex-direction: column;
+    gap: 1.6rem; /* Reduce the space between the image and text */
+    text-align: center; /* Center the text for a better look */
+    max-width: 30rem; /* Limit how wide a single pizza item can stretch */
+  }
+
+  /* Make the image full-width in the narrow column */
+  .pizza img {
+    width: 100%;
+    max-width: 12rem; /* Keep the max-width to prevent stretching */
+    margin: 0 auto; /* Center the image */
+  }
+
+  /* Center text elements within the details */
+  .pizza div {
+    align-items: center;
+  }
+
+  /* Adjust the main paragraph for readability on small screens */
+  .menu > p {
+    font-size: 1.4rem;
+    width: 95%;
+  }
+
+  /* Adjust the 'ORDER' button size for smaller fingers */
+  .btn {
+    padding: 1.2rem 2.8rem;
+    font-size: 1.3rem;
+  }
+}
